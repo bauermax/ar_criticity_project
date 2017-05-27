@@ -1,0 +1,20 @@
+
+%h3
+  Add a new Indicator for
+  =@machine.libelle
+
+=simple_form_for [@machine, @indicateur] do |f|
+  =f.label :libelle
+  =f.text_field :libelle, class:"form-control"
+
+  %hr
+
+  =f.label :etat
+  =f.select(:etat, Indicateur::ETAT, {}, {:class => "form-control"})
+
+  %hr
+  =f.label :commentaire
+  =f.text_area :commentaire, class:"form-control"
+
+  %hr
+  = f.submit "Sauvegarder" ,class:"btn btn-primary"

@@ -25,6 +25,16 @@ class Machine < ApplicationRecord
   friendly_id :libelle, use: :slugged
 
   #methodes
+  def update_etat
+    indic = self.indicateurs
+    worst = 4
+    indic.each do |i|
+      worst = i.etat if i.etat < worst
+    end
+    self.etat = worst
+    self.save
+  end
+
   def calcul_poids
     self.incidence * self.importance * self.etat * self.utilisation
   end
@@ -35,6 +45,8 @@ class Machine < ApplicationRecord
       "Status super critique ! Vous devez procéder à la maintenance immediatement"
     elsif poids > STATUS_SUPERCRITIQUE and poids < STATUS_CRITIQUE
       "Status critique, veuillez procéder à une maintenance dès que possible"
+    else
+      "Status non critique, tout est en ordre"
     end
   end
 
@@ -45,6 +57,6 @@ class Machine < ApplicationRecord
         critiques << i
       end
     end
-    return critiques
+    critiques
   end
 end
