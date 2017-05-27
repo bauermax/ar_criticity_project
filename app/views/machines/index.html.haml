@@ -1,0 +1,19 @@
+%h1 liste des machines
+%ul
+  -@machines.each do |m|
+    %li
+      =m.libelle
+      |
+      =link_to machine_path(m) do
+        View
+      |
+      =link_to edit_machine_path(m) do
+        Edit
+      |
+      =link_to machine_path(m), method: :delete do
+        Delete
+
+%hr
+=link_to new_machine_path do
+  %btn.btn.btn-primary
+    New Machine

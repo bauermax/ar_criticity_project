@@ -1,0 +1,30 @@
+
+%h1 Add a new Machine
+
+
+=simple_form_for @machine do |f|
+  =f.label :libelle
+  =f.text_field :libelle, class:"form-control"
+
+  %hr
+
+  =f.label :incidence
+  =f.select(:incidence, Machine::INCIDENCE, {}, {:class => "form-control"})
+
+  %hr
+
+  =f.label :importance
+  =f.select(:importance, Machine::IMPORTANCE, {}, {:class => "form-control"})
+
+  %hr
+
+  =f.label :utilisation
+  =f.select(:utilisation, Machine::UTILISATION, {}, {:class => "form-control"})
+
+  %hr
+
+  =f.label :etat
+  =f.select(:etat, Machine::ETAT, {}, {:class => "form-control"})
+
+  %hr
+  = f.submit "Sauvegarder" ,class:"btn btn-primary"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  machine: one
+  libelle: MyString
+  etat: 1.5
+
+two:
+  machine: two
+  libelle: MyString
+  etat: 1.5

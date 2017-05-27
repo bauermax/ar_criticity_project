@@ -1,0 +1,68 @@
+%h1 Visualisation d'une machine
+
+
+
+%h4
+  Nom :
+  %span{:style => "color:blue;text-transform:capitalize;"}
+    =@machine.libelle
+%h4
+  Incidence d'une panne dans le systeme :
+  %span{:style => "color:red;text-transform:capitalize;"}
+    =Machine::INCIDENCE.key(@machine.incidence)
+
+%h4
+  Importance de l'équipement :
+  %span{:style => "color:red;text-transform:capitalize;"}
+    =Machine::IMPORTANCE.key(@machine.importance)
+
+%h4
+  Etat de l'équipement :
+  %span{:style => "color:red;text-transform:capitalize;"}
+    =Machine::ETAT.key(@machine.etat)
+
+%h4
+  Etat d'utilisation :
+  %span{:style => "color:red;text-transform:capitalize;"}
+    =Machine::UTILISATION.key(@machine.utilisation)
+
+.panel.panel-default
+  .panel-heading
+    %h3
+      Status de la machine, indice :
+      =@machine.calcul_poids
+  .panel-body
+    %h3
+      =@machine.get_decision
+
+
+    -if @machine.get_indicateurs_critiques.present?
+      %h2 Indicateurs Critiques :
+      -@machine.get_indicateurs_critiques.each do |i|
+        %b
+          =i.libelle
+          =" : "
+        %span{:style => "color:red;text-transform:capitalize;"}
+          =Indicateur::ETAT.key(i.etat)
+        %br
+        %b
+          ="Commentaire => "
+        =i.commentaire
+        %hr
+
+
+
+
+-if @machine.indicateurs.present?
+  %h4 Tous les indicateurs :
+  -@machine.indicateurs.each do |i|
+    %b
+      =i.libelle
+      =" : "
+    %span{:style => "color:red;text-transform:capitalize;"}
+      =Indicateur::ETAT.key(i.etat)
+    %br
+    %b
+      ="Commentaire => "
+    =i.commentaire
+    %hr
