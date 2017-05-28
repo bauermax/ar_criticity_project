@@ -1,31 +1,24 @@
 
-%h1 Edit a Machine
+%h1
+  Edit a Machine
 
 
 =simple_form_for @machine do |f|
-
   =f.label :libelle
   =f.text_field :libelle, class:"form-control"
 
   %hr
-
-  =f.label :incidence
-  =f.select(:incidence, Machine::INCIDENCE, {}, {:class => "form-control"})
+  =f.input :incidence, :collection => Machine::INCIDENCE, :selected =>Machine::INCIDENCE.keys.find_index(Machine::INCIDENCE.key(@machine.incidence)),input_html: { class: "form-control" }
 
   %hr
-
-  =f.label :importance
-  =f.select(:importance, Machine::IMPORTANCE, {}, {:class => "form-control"})
+  =f.input :importance, :collection => Machine::IMPORTANCE, :selected =>Machine::IMPORTANCE.keys.find_index(Machine::IMPORTANCE.key(@machine.importance)),input_html: { class: "form-control" }
 
   %hr
-
-  =f.label :utilisation
-  =f.select(:utilisation, Machine::UTILISATION, {}, {:class => "form-control"})
+  =f.input :etat, :collection => Machine::ETAT, :selected =>Machine::ETAT.keys.find_index(Machine::ETAT.key(@machine.etat)),disabled: true,input_html: { class: "form-control" }
 
   %hr
+  =f.input :utilisation, :collection => Machine::UTILISATION, :selected =>Machine::UTILISATION.keys.find_index(Machine::UTILISATION.key(@machine.utilisation)),input_html: { class: "form-control" }
 
-  =f.label :etat
-  =f.select(:etat, Machine::ETAT, {}, {:class => "form-control"})
 
   %hr
   = f.submit "Sauvegarder" ,class:"btn btn-primary"
