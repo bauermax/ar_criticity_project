@@ -14,9 +14,13 @@
   =f.input :importance, :collection => Machine::IMPORTANCE, :selected =>Machine::IMPORTANCE.keys.find_index(Machine::IMPORTANCE.key(@machine.importance)),input_html: { class: "form-control" }
 
   %hr
-  =f.input :etat, :collection => Machine::ETAT, :selected =>Machine::ETAT.keys.find_index(Machine::ETAT.key(@machine.etat)),disabled: true,input_html: { class: "form-control" }
+  -if @machine.indicateurs.present?
+    =f.input :etat, :collection => Machine::ETAT, :selected =>Machine::ETAT.keys.find_index(Machine::ETAT.key(@machine.etat)),disabled: true,input_html: { class: "form-control" }
+  -else
+    =f.input :etat, :collection => Machine::ETAT, :selected =>Machine::ETAT.keys.find_index(Machine::ETAT.key(@machine.etat)),disabled: false,input_html: { class: "form-control" }
 
   %hr
+
   =f.input :utilisation, :collection => Machine::UTILISATION, :selected =>Machine::UTILISATION.keys.find_index(Machine::UTILISATION.key(@machine.utilisation)),input_html: { class: "form-control" }
 
 

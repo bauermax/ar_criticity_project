@@ -71,6 +71,10 @@
     %b
       ="Commentaire => "
     =i.commentaire
+    %br
+    %small{:style => "font-size: 12px;"}
+      =link_to edit_machine_indicateur_path(@machine,i) do
+        modifier
     %hr
 =link_to new_machine_indicateur_path(@machine) do
   %btn.btn.btn-primary
