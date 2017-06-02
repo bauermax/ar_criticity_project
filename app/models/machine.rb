@@ -54,7 +54,8 @@ class Machine < ApplicationRecord
     critiques = []
     self.indicateurs.each do |i|
       if i.etat <= ETAT["mauvais"]
-        critiques << i
+        hash = {"full_indicator" => i, "state_label" => Indicateur::ETAT.key(i.etat) }
+        critiques << hash
       end
     end
     critiques
