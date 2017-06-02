@@ -11,12 +11,12 @@ class Api::MachinesController < ApplicationController
     table =  {
       "machine" => @machine,
       "machine_criticity_weight" => @machine.calcul_poids,
-      "machine_critical_indicators" => @machine.get_indicateurs_critiques,
+      #"machine_critical_indicators" => @machine.get_indicateurs_critiques,
       "machine_suggestion" => @machine.get_decision
     }
 
 
 
-    render json: table
+    render json: table.to_json
   end
 end
