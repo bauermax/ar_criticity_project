@@ -8,10 +8,14 @@ class Api::MachinesController < ApplicationController
   def show
     @machine = Machine.friendly.find(params[:id])
 
-    table = []
-    table << @machine
-    table << @machine.calcul_poids
-    table << @machine.get_indicateurs_critiques
+    table =  {
+      "machine" => @machine,
+      "machine_criticity_weight" => @machine.calcul_poids,
+      "machine_critical_indicators" => @machine.get_indicateurs_critiques,
+      "machine_suggestion" => @machine.get_decision
+    }
+
+
 
     render json: table
   end
