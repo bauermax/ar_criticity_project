@@ -43,18 +43,17 @@
 -if @machine.get_indicateurs_critiques.present?
   %h4 Indicateurs Critiques :
   -@machine.get_indicateurs_critiques.each do |i|
-  =i.inspect
-    -#
-      %b
-        =i.libelle
-        =" : "
-      %span{:style => "color:red;text-transform:capitalize;"}
-        =Indicateur::ETAT.key(i.etat)
-      %br
-      %b
-        ="Commentaire => "
-      =i.commentaire
-      %hr
+    -i = i['full_indicator']
+    %b
+      =i.libelle
+      =" : "
+    %span{:style => "color:red;text-transform:capitalize;"}
+      =Indicateur::ETAT.key(i.etat)
+    %br
+    %b
+      ="Commentaire => "
+    =i.commentaire
+    %hr
 
 
 
