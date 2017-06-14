@@ -36,7 +36,7 @@ class Machine < ApplicationRecord
   end
 
   def calcul_poids
-    self.incidence * self.importance * self.etat * self.utilisation
+    return (self.incidence * self.importance * self.etat * self.utilisation).round(3)
   end
 
   def get_decision
