@@ -43,6 +43,7 @@
 -if @machine.get_indicateurs_critiques.present?
   %h4 Indicateurs Critiques :
   -@machine.get_indicateurs_critiques.each do |i|
+  =i.inspect
     %b
       =i.libelle
       =" : "
