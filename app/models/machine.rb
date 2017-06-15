@@ -1,7 +1,7 @@
 class Machine < ApplicationRecord
   extend FriendlyId
 
-  has_many :indicateurs
+  has_many :indicateurs, :dependent => :delete_all
 
   #constantes incidence
   INCIDENCE = {"grave" => 0.1, "importante" => 1, "moyenne" => 2, "possible"=> 3, "aucune" => 4}
