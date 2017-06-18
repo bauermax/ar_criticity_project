@@ -1,30 +1,30 @@
 %h1
-  Visualisation d'une machine
+  Machine view
   %small{:style => "font-size: 16px;"}
     =link_to edit_machine_path(@machine) do
-      modifier
+      edit
 
 
 %h4
   %span{:style => "color:blue;text-transform:capitalize;"}
     =@machine.libelle
 %h5
-  Incidence d'une panne dans le systeme :
+  Impact of a breakdown :
   %span{:style => "color:red;text-transform:capitalize;"}
     =Machine::INCIDENCE.key(@machine.incidence)
 
 %h5
-  Importance de l'équipement :
+  Importance of the machine :
   %span{:style => "color:red;text-transform:capitalize;"}
     =Machine::IMPORTANCE.key(@machine.importance)
 
 %h5
-  Etat de l'équipement :
+  Equipement state :
   %span{:style => "color:red;text-transform:capitalize;"}
     =Machine::ETAT.key(@machine.etat)
 
 %h5
-  Etat d'utilisation :
+  Use state :
   %span{:style => "color:red;text-transform:capitalize;"}
     =Machine::UTILISATION.key(@machine.utilisation)
 %hr
@@ -32,7 +32,7 @@
 
 
 %h5
-  Status de la machine, indice :
+  Machine status :
   %b
     =@machine.calcul_poids
 
@@ -41,7 +41,7 @@
 
 
 -if @machine.get_indicateurs_critiques.present?
-  %h4 Indicateurs Critiques :
+  %h4 Critical indicators :
   -@machine.get_indicateurs_critiques.each do |i|
     -i = i['full_indicator']
     %b
@@ -51,7 +51,7 @@
       =Indicateur::ETAT.key(i.etat)
     %br
     %b
-      ="Commentaire => "
+      ="Comment => "
     =i.commentaire
     %hr
 
@@ -61,7 +61,7 @@
 -if @machine.indicateurs.present?
   %hr
   %hr
-  %h4 Tous les indicateurs :
+  %h4 All indicators :
   -@machine.indicateurs.each do |i|
     %b
       =i.libelle
@@ -70,13 +70,13 @@
       =Indicateur::ETAT.key(i.etat)
     %br
     %b
-      ="Commentaire => "
+      ="Comment => "
     =i.commentaire
     %br
     %small{:style => "font-size: 12px;"}
       =link_to edit_machine_indicateur_path(@machine,i) do
-        modifier
+        edit
     %hr
 =link_to new_machine_indicateur_path(@machine) do
   %btn.btn.btn-primary
-    Ajouter un indicateur
+    Add indicator
