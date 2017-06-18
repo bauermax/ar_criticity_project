@@ -18,7 +18,7 @@ class Machine < ApplicationRecord
 
   #constantes status
   STATUS_SUPERCRITIQUE = 0.8
-  STATUS_CRITIQUE = 6
+  STATUS_CRITIQUE = 8
 
 
   #######
