@@ -13,12 +13,12 @@ class Machine < ApplicationRecord
   ETAT = {"to reform" => 0.1, "to renovate" => 1, "bad" => 2, "good"=> 3, "new" => 4}
 
   #constantes utilisation
-  UTILISATION  = {"saturated" => 0.1, "strong" => 1, "medium" => 2, "low"=> 3, "minimal" => 4}
+  UTILISATION  = {"saturated" => 0.1, "high" => 1, "medium" => 2, "low"=> 3, "minimal" => 4}
 
 
   #constantes status
-  STATUS_SUPERCRITIQUE = 1
-  STATUS_CRITIQUE = 8
+  STATUS_SUPERCRITIQUE = 0.8
+  STATUS_CRITIQUE = 6
 
 
   #######
